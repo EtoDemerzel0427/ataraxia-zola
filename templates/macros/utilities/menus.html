@@ -11,17 +11,21 @@
   {%- endif -%}
 
   <div class="sidebar-nav list-group my-auto rounded-0 text-center">
-    {%- for item in config.extra.menus.nav -%}
-      <a
-        href="{{ standard::get_url_on_location(path = item.url) }}"
-        class="sidebar-nav-item list-group-item list-group-item-action border border-0"
-        data-bs-toggle="tooltip" data-bs-title="{{ item.name | safe }}"
-      >
-        <span class="sidebar-nav-icon bi {{ item.icon | safe }} {{ nav_icon_class | safe }} fs-4"></span>
-        <span class="sidebar-nav-text {{ nav_text_class | safe }}">
-          {{ item.name | safe }}
-        </span>
-      </a>
+    {%- for menu in config.extra.menus.nav -%}
+      {%- if menu.item == lang -%}
+        {%- for link in menu.links -%}
+          <a
+            href="{{ standard::get_url_on_location(path = link.url) }}"
+            class="sidebar-nav-item list-group-item list-group-item-action border border-0"
+            data-bs-toggle="tooltip" data-bs-title="{{ link.name | safe }}"
+          >
+          <span class="sidebar-nav-icon bi {{ link.icon | safe }} {{ nav_icon_class | safe }} fs-4"></span>
+          <span class="sidebar-nav-text {{ nav_text_class | safe }}">
+            {{ link.name | safe }}
+          </span>
+          </a>
+       {%- endfor -%}
+      {%- endif -%}
     {%- endfor -%}
   </div>
 {%- endmacro sidebar_nav -%}
@@ -29,15 +33,19 @@
 
 {%- macro offcanvas_sidebar_nav() -%}
   <div class="sidebar-nav list-group my-auto rounded-0 text-start">
-    {%- for item in config.extra.menus.nav -%}
-      <a
-        href="{{ standard::get_url_on_location(path = item.url) }}"
-        class="sidebar-nav-item list-group-item list-group-item-action border border-0"
-        data-bs-toggle="tooltip" data-bs-title="{{ item.name | safe }}"
-      >
-        <span class="sidebar-nav-icon bi {{ item.icon | safe }} ms-2 me-1 fs-4"></span>
-        <span class="sidebar-nav-text">{{ item.name | safe }}</span>
-      </a>
+    {%- for menu in config.extra.menus.nav -%}
+      {%- if menu.item == lang -%}
+        {%- for link in menu.links -%}
+          <a
+            href="{{ standard::get_url_on_location(path = link.url) }}"
+            class="sidebar-nav-item list-group-item list-group-item-action border border-0"
+            data-bs-toggle="tooltip" data-bs-title="{{ link.name | safe }}"
+          >
+          <span class="sidebar-nav-icon bi {{ link.icon | safe }} ms-2 me-1 fs-4"></span>
+          <span class="sidebar-nav-text">{{ link.name | safe }}</span>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
     {%- endfor -%}
   </div>
 {%- endmacro offcanvas_sidebar_nav -%}
