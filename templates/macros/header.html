@@ -28,7 +28,12 @@
         {% endif %}
       </div>
 
-      {{ search::search_btn() }}
+      <!-- Add language toggle button here -->
+      
+      <div class="d-flex ms-auto">
+        {{ toggle_lang::toggle_lang_btn() }}
+        {{ search::search_btn() }}
+      </div>
     </div>
   </nav>
 {%- endmacro header -%}

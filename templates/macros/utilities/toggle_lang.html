@@ -1,0 +1,27 @@
+{%- macro toggle_lang_js() -%}
+  <script>
+    function toggleLanguage() {
+        const currentUrl = new URL(window.location.href);
+        const pathSegments = currentUrl.pathname.split('/').filter(segment => segment);
+        
+        if (pathSegments[0] === 'zh') {
+            pathSegments.shift();
+        } else {
+            pathSegments.unshift('zh');
+        }
+        
+        currentUrl.pathname = '/' + pathSegments.join('/');
+        window.location.href = currentUrl.href;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('language-toggler').addEventListener('click', toggleLanguage);
+    });
+  </script>
+{%- endmacro toggle_lang_js -%}
+
+{%- macro toggle_lang_btn() -%}
+  <button type="button" class="btn btn-link border-0 text-dark" id="language-toggler">
+    <i class="bi bi-globe2 fs-5 fs-md-4 fs-lg-5"></i>
+  </button>
+{%- endmacro toggle_lang_btn -%}

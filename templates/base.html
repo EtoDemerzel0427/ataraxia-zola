@@ -1,5 +1,6 @@
 {% import "macros/head.html" as head %}
 {% import "macros/utilities/search.html" as search %}
+{% import "macros/utilities/toggle_lang.html" as toggle_lang %}
 {% import "macros/sidebar.html" as sidebar %}
 {% import "macros/header.html" as header %}
 {% import "macros/footer.html" as footer %}
@@ -59,6 +60,7 @@
       myInput.focus()
     });
   </script>
+  {{ toggle_lang::toggle_lang_js() }}}
   {{ search::search_js(lang = config.default_language) }}
 </body>
 </html>

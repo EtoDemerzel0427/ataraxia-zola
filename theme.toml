@@ -8,19 +8,6 @@ demo = "https://gersonbdev.github.io/"
 
 [extra]
 
-# language switcher
-[extra.lang]
-items = [
-    { lang = "en", links = [
-        { base_url = "/", name = "English" },
-        { base_url = "/cn", name = "中文" }
-    ] },
-    { lang = "cn", links = [
-        { base_url = "/", name = "English" },
-        { base_url = "/cn", name = "中文" }
-    ] }
-]
-
 
 [author]
 name = "Gerson Benavides"
