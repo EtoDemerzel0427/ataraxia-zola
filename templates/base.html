@@ -61,6 +61,8 @@
     });
   </script>
   {{ toggle_lang::toggle_lang_js() }}}
-  {{ search::search_js(lang = config.default_language) }}
+  const lang = document.documentElement.lang;
+  console.log(lang);
+  {{ search::search_js(lang = lang) }}
 </body>
 </html>
