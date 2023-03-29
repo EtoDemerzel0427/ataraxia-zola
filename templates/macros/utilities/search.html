@@ -1,7 +1,9 @@
 {%- macro search_js(lang) -%}
   <script src="{{ get_url(path='elasticlunr.min.js') | safe }}"></script>
+  {%- if lang == "en" -%}
   <script src="{{ get_url(path='search_index.' ~ config.default_language ~ '.js') | safe }}"></script>
-  {%- if lang != "en" -%}
+  {%- else -%}
+    <script src="{{ get_url(path='search_index.' ~ lang ~ '.js') | safe }}"></script>
     <script src="{{ get_url(path='assets/js/search/lunr.stemmer.support.min.js') | safe }}"></script>
     <script src="{{ get_url(path='assets/js/search/lunr.' ~ lang ~ '.min.js') | safe }}"></script>
   {%- endif -%}
